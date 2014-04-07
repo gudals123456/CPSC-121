@@ -1,0 +1,227 @@
+\documentclass[11pt, notitlepage, leqno]{article}
+
+%package imports
+\usepackage[T1]{fontenc}
+\usepackage[letterpaper, margin=1in]{geometry}  %for letter-sized paper
+\usepackage{setspace}              %double spacing
+\usepackage{fancyhdr}              %header capability
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{wrapfig}
+
+%page layout setup
+\setlength{\headheight}{14.5pt}
+\setlength{\headsep}{25pt}
+
+%header setup
+\pagestyle{fancyplain}
+\fancyhf{}
+
+\lhead{\fancyplain{}{\today}}                 %top left
+\chead{\fancyplain{}{CPSC 121: Assignment 2}}                                 %top center
+\rhead{\fancyplain{}{Calvin Cheng \& Brian Wu}}	                    %top right
+\lfoot{\fancyplain{}{}}                                 %bottom left
+\cfoot{\fancyplain{}{---\thepage---}}                   %bottom center
+\rfoot{\fancyplain{}{}}                                 %bottom right
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\newcommand{\unit}[1]{\;\textrm{#1}}
+\renewcommand{\neg}{\mathord{\sim}}
+
+\newcommand*\adjustwrapfigitem{\null\vskip-\baselineskip}
+
+%document beginning
+\begin{document}
+
+%line spacing
+\setstretch{1.0}
+
+\begin{enumerate}
+
+\item \begin{enumerate}
+
+\item \begin{enumerate}
+
+\item $72_{10} \equiv 1001000_2 \equiv 48_{16}$
+
+\item $549_{10} \equiv 1000100101_2 \equiv 225_{16}$
+
+\item $4422_{10} \equiv 1000101000110_2 \equiv 1146_{16}$
+
+\end{enumerate}
+
+\item \begin{enumerate}
+
+\item $10101010_2$
+
+$\equiv 170_{10}$ if unsigned
+
+$\equiv -86_{10}$ if signed
+
+\item $11100011_2$
+
+$\equiv 227_{10}$ if unsigned
+
+$\equiv -29_{10}$ if signed 
+
+\item $101010_2$
+
+$\equiv 42_{10}$ if unsigned
+
+$\equiv 42_{10}$ if signed 
+
+\end{enumerate}
+
+\end{enumerate}
+
+\item \begin{enumerate}
+
+\item The polar coordinate with angle 10 and radius 1234.5 can be represented by the following: 000001010 0000010011010010 1000000 and 101110010 0000010011010010 1000000. This is because the angles $10^\circ$ and $370^\circ$, as represented in the 9-bit angle portions of the two representations above, respectively, are equivalent in standard position. In fact, any two angles that are $360^\circ$ apart will be equivalent, as long as they both can be represented with 9 bits.
+
+The polar coordinate where the point is at the origin can be represented by the following:
+111111111 0000000000000000 0000000 and 000000000 0000000000000000 0000000. As long as the radius portion of the representation is 0, every possible angle can be used in the 9-bit angle portion of the representation, as any point 0 metres away from the origin will always be in the same position, regardless of what the angle is.
+
+\item {[Omitted for brevity]}
+
+\item The minimum distance from the origin would have to be represented by a 23-bit radius of 0000000000000000 0000001, which can be translated into $\frac{1}{2^7} \equiv \frac{1}{128} \equiv 0.0078125_{10}$. As a result, 0.0078125 metres is the minimum distance that can be represented using this representation.
+
+\item {[Omitted for brevity]}
+
+\item \begin{enumerate}
+
+\item Because $a_3$ alternates between 0 and 1 (starting from 0) as the value of $a$ increases, and because the angle alternates from being on the axis and off the axis for every increment of $45^\circ$, the propositional logic formula for output $o$ is simply $\neg a_3$.
+
+\item {[Omitted for brevity]}
+
+\end{enumerate}
+
+\end{enumerate}
+
+\item {[Omitted for brevity]}
+
+\item \begin{enumerate}
+
+\item \textit{Proof.} \nopagebreak \vspace{-10pt} 
+\begin{align}
+	& s \vee r 		&& \textrm{Premise}\\
+ 	& p 				&& \textrm{Premise}\\
+ 	& r \to \neg q 		&& \textrm{Premise}\\
+ 	& p \to q 			&& \textrm{Premise}\\
+ 	& q 				&& \textrm{[M.\ PON] on 4,2}\\
+ 	& \neg r 			&& \textrm{[M.\ TOL] on 3, 5}\\
+ 	& s 				&& \textrm{[ELIM] on 1, 6}\\
+ 	& \notag\overline{\therefore s \vee t} && \textrm{[GEN] on 7} & \blacksquare
+\end{align}
+
+\item \textit{Proof.} \nopagebreak \vspace{-10pt} 
+\begin{align} \setcounter{equation}{0}
+	& p \to (q \to r) 	&& \textrm{Premise}\\
+ 	& p \vee s 		&& \textrm{Premise}\\
+ 	& t \to q	 		&& \textrm{Premise}\\
+ 	& \neg s 			&& \textrm{Premise}\\
+ 	& \neg p \vee (q \to r) && \textrm{[IMP] on 1}\\
+ 	& s \vee (q \to r)	&& \textrm{[RES] on 2, 5}\\
+ 	& q \to r 			&& \textrm{[ELIM] on 6, 4}\\
+ 	& t \to r 			&& \textrm{[TRANS] on 3, 7}\\
+ 	& \notag\overline{\therefore \neg r \to \neg t} 	&& \textrm{[IMP] on 8} & \blacksquare
+\end{align}
+
+\item \textit{Proof.} \nopagebreak \vspace{-10pt}
+\begin{align} \setcounter{equation}{0}
+	& p \wedge q 		&& \textrm{Premise}\\
+ 	& p \to (r \wedge q)	&& \textrm{Premise}\\
+ 	& r \to (s \vee t)	&& \textrm{Premise}\\
+ 	& \neg s 			&& \textrm{Premise}\\
+ 	& r \to t 			&& \textrm{[ELIM] on 3, 4}\\
+ 	& p 				&& \textrm{[SPEC] on 1}\\
+ 	& r \wedge q 		&& \textrm{[M.\ PON] on 1, 6}\\
+ 	& r 				&& \textrm{[SPEC] on 7}\\
+ 	& \notag\overline{\therefore t} 				&& \textrm{[M.\ PON] on 5, 8} & \blacksquare
+\end{align}
+
+\item \textit{Proof.} \nopagebreak \vspace{-10pt}
+\begin{align} \setcounter{equation}{0}
+	& (\neg p \vee q) \to r && \textrm{Premise}\\
+ 	& r \to (s \vee t) 	&& \textrm{Premise}\\
+ 	& \neg s \wedge \neg u && \textrm{Premise}\\
+ 	& \neg u \to \neg t && \textrm{Premise}\\
+ 	& \neg s 			&& \textrm{[SPEC] on 3}\\
+ 	& r \to t 			&& \textrm{[ELIM] on 2, 5}\\
+ 	& \neg u 			&& \textrm{[SPEC] on 3}\\
+ 	& \neg t 			&& \textrm{[M.\ PON] on 4, 7}\\
+ 	& \neg (p \wedge q) \to r && \textrm{[DM] on 1}\\
+ 	& \neg (p \wedge q) \to t && \textrm{[TRANS] on 9, 6}\\
+ 	& p \wedge q 		&& \textrm{[M.\ TOL] on 10, 8}\\
+ 	& \notag\overline{\therefore p} 		&& \textrm{[SPEC] on 11} & \blacksquare
+\end{align}
+
+\end{enumerate}
+
+\item {[Omitted for brevity]} \newpage
+
+\item \begin{enumerate}
+
+\item This argument is valid.
+\begin{proof}
+\begin{tabular}[t]{llll}
+Let & $d$ & = & Dominic goes to the racetrack. \\
+& $h$ & = & Helen will be upset.           \\
+& $r$ & = & Ralph plays cards all night.   \\
+& $c$ & = & Carmen will be upset.          \\
+& $v$ & = & Veronica will be notified.\\
+\end{tabular}
+
+Then, in symbolic form, the arguments can be re-written as follows:
+\begin{align*}
+& d \to h\\
+& r \to c\\
+& (h \vee c) \to v\\
+& \neg v\\
+& \overline{\therefore \neg d \wedge \neg r}
+\end{align*}
+From this, we can prove that if the premises are true, then Dominic didn't make it to the racetrack and Ralph didn't play cards all night:
+\begin{align} \setcounter{equation}{0}
+	& d \to h 			&& \textrm{Premise}\\
+	& r \to c 			&& \textrm{Premise}\\
+	& (h \vee c) \to v 	&& \textrm{Premise}\\
+	& \neg v 			&& \textrm{Premise}\\
+	& \neg (h \vee c) 	&& \textrm{[M.\ TOL] on 3, 4}\\
+	& \neg h \wedge \neg c && \textrm{[DM] on 5}\\
+	& \neg h 			&& \textrm{[SPEC] on 6}\\
+	& \neg d 			&& \textrm{[M.\ TOL] on 1, 7}\\
+	& \neg c 			&& \textrm{[SPEC] on 6}\\
+	& \neg r 			&& \textrm{[M.\ TOL] on 2, 9}\\
+	& \overline{\therefore \neg d \wedge \neg r} && \textrm{[CONJ] on 8, 10} \qedhere
+\end{align}
+\end{proof}
+
+\item This argument is invalid.
+\begin{proof}
+\begin{tabular}[t]{llll}
+Let & $n$ & = & Newton is considered a great mathematician. \\
+& $l$ & = & Leibniz's work is ignored.           \\
+& $c$ & = & Calculus is the centerpiece of the math curriculum.   \\
+\end{tabular}
+
+Then, in symbolic form, the arguments can be re-written as follows:
+\begin{align*}
+& (\neg n \wedge \neg l) \to \neg c\\
+& n \to l\\
+& \overline{\therefore c \wedge \neg l}
+\end{align*}
+When $l=T$, and $c=F$, the premises will be true and the conclusion will be false (regardless of the value of $n$). Because the definition of a valid argument requires that the conclusion be true if all of the premises are true, this argument is invalid, as there exists at least one counterexample to disprove the argument, as shown above.
+\end{proof}
+
+\end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}

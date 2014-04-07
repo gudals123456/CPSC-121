@@ -1,0 +1,150 @@
+\documentclass[11pt, notitlepage, leqno]{article}
+
+%package imports
+\usepackage[T1]{fontenc}
+\usepackage[letterpaper, margin=1in]{geometry}  %for letter-sized paper
+\usepackage{setspace}              %double spacing
+\usepackage{fancyhdr}              %header capability
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{wrapfig}
+
+%page layout setup
+\setlength{\headheight}{14.5pt}
+\setlength{\headsep}{25pt}
+
+%header setup
+\pagestyle{fancyplain}
+\fancyhf{}
+
+\lhead{\fancyplain{}{\today}}                 %top left
+\chead{\fancyplain{}{CPSC 121: Assignment 3}}                                 %top center
+\rhead{\fancyplain{}{Calvin Cheng \& Brian Wu}}	                    %top right
+\lfoot{\fancyplain{}{}}                                 %bottom left
+\cfoot{\fancyplain{}{---\thepage---}}                   %bottom center
+\rfoot{\fancyplain{}{}}                                 %bottom right
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\newcommand{\unit}[1]{\;\textrm{#1}}
+\renewcommand{\neg}{\mathord{\sim}}
+
+\newcommand*\adjustwrapfigitem{\null\vskip-\baselineskip}
+
+%document beginning
+\begin{document}
+
+%line spacing
+\setstretch{1.0}
+
+\begin{enumerate}
+
+\item \begin{enumerate}
+
+\item $\forall a \in A, (M(x) \wedge (\exists p \in P, \textrm{\textrm{Won}}(x, p, \textrm{``free-skating''}))) \to (C(a) \vee U(a))$
+
+\item $\neg \exists a \in A, F(a) \wedge R(a) \wedge (\exists p \in P, \textrm{\textrm{Won}}(a, p, \textrm{``bobsleigh''}) \vee \textrm{\textrm{Won}}(a, p, \textrm{``ski-jumping''}))$
+
+\item $\forall x \in A, C(x) \to (\exists y \in A, U(y) \wedge (\exists p \in P, \exists w \in W, \textrm{\textrm{Won}}(y, p, w)) \wedge \textrm{Coach}(y, x))$
+
+\item $\exists x \in A, R(x) \wedge F(x) \wedge (\neg \exists y \in A, \textrm{Coach}(x, y) \wedge (\forall w \in W, \textrm{\textrm{Comp}}(x,w) \to \textrm{\textrm{Comp}}(y,w)))$
+
+\item $\exists a \in A, \exists b \in A, a \neq b \wedge \textrm{Coach}(\textrm{``Mary''}, a) \wedge \textrm{Coach}(\textrm{``Mary''}, b) \wedge\\
+(\forall w \in W, \textrm{\textrm{Comp}}(\textrm{``Mary''}, w) \to (\neg \textrm{\textrm{Comp}}(a, w) \wedge \neg \textrm{\textrm{Comp}}(b, w)))$
+
+\item $\forall a \in A, (U(a) \wedge \textrm{\textrm{Comp}}(a, \textrm{``luge''})) \to (\exists x \in A, C(x) \wedge \textrm{\textrm{Comp}}(x, \textrm{``luge''}) \wedge \textrm{Coach}(x, a) \wedge \\
+(\neg \exists y \in A, x \neq y \wedge C(y) \wedge \textrm{\textrm{Comp}}(y, \textrm{``luge''}) \wedge \textrm{Coach}(y, a)))$
+
+\end{enumerate}
+
+\item \begin{enumerate}
+
+\item Canadian athletes neither coach athletes nor are coached by athletes.
+
+\item Self-coached athletes neither coach other athletes nor are coached by other athletes.
+
+\item American skeleton athletes are coached by at most one athlete.
+
+\item Medal-winning Canadian athletes are not coached by any athlete
+
+\item Every athlete is coached by one of two athlete coaches.
+
+\end{enumerate}
+
+\item \begin{enumerate}
+
+\item \textit{Proof.} \nopagebreak \vspace{-10pt} 
+\begin{align}
+	& \forall x \in A, (U(x) \vee R(x)) \to \neg \exists y \in A, \textrm{\textrm{Coach}}(y, x) && \textit{Premise} \\
+	& \textrm{\textrm{Coach}}(\textrm{``Mary'', ``Paul''}) && \textit{Premise} \\
+	& \forall x \in A, (U(x) \vee R(x)) \to \forall y \in A, \neg \textrm{\textrm{Coach}}(y, x) && \textit{1, Generalized De Morgan's}\\
+	& (U(\textrm{``Paul''}) \vee R(\textrm{``Paul''})) \to \neg \textrm{\textrm{Coach}}(\textrm{``Mary''}, \textrm{``Paul''}) && \textit{3, Universal instantiation}\\
+	& \neg  (U(\textrm{``Paul''}) \vee R(\textrm{``Paul''})) && \textit{4, 2, [M.TOL]} \\
+	& \neg U(\textrm{``Paul''}) \wedge \neg R(\textrm{``Paul''})) && \textit{5, [DM]} \\
+	& \therefore \neg U(\textrm{``Paul''}) && \textit{6, [SPEC]} \notag \qed
+\end {align}
+
+\item \textit{Proof.} \nopagebreak \vspace{-10pt} 
+\begin{align} \setcounter{equation}{0}
+	& \forall a \in A, C(a) \to \exists x \in P, \exists y \in W, \textrm{\textrm{Won}}(a, x, y) && \textit{Premise} \\
+	& \forall a \in A, \exists x \in P, \exists y \in W, \textrm{\textrm{Won}}(a, x, y) \to \forall b \in A, \neg \textrm{\textrm{Coach}}(b, a) && \textit{Premise} \\
+	& \forall a \in A, \textrm{\textrm{Comp}}(a, \textrm{``skeleton''}) \to \exists b \in A, \textrm{\textrm{Coach}}(b, a) && \textit{Premise}
+\end{align} \vspace{-33pt}
+\begin{align}
+	& \forall a \in A, C(a) \to \textrm{\textrm{Won}}(a, i, j) && \textit{1, Existential instantiation} \\
+	& C(p) \to \textrm{Won}(p, i, j) && \textit{4, Universal instantiation} \\
+	& \forall a \in A, \textrm{Won}(a, i, j) \to \forall b \in A, \neg \textrm{Coach}(b, a) && \textit{2, Existential  instantiation} \\
+	& \textrm{Won}(p, i, j) \to \neg \textrm{Coach}(q, p) && \textit{6, Universal instantiation} \\
+	& C(p) \to \neg \textrm{Coach}(q, p) && \textit{5, 7, [TRANS]} \\
+	& \forall a \in A, \textrm{\textrm{Comp}}(a, \textrm{``skeleton''}) \to \textrm{Coach}(w, a) && \textit{3, Existential instantiation} \\
+	& \textrm{Comp}(p, \textrm{``skeleton''}) \to \textrm{Coach}(w, p) && \textit{9, Universal instantiation} \\
+	& \textrm{Coach}(w, p) \to \neg C(p) && \textit{8, [IMP]} \\
+	& \textrm{Comp}(p, \textrm{``skeleton''}) \to \neg C(p) && \textit{10, 11, [TRANS]}\\
+	& \forall x \in A, \textrm{Comp}(x, \textrm{``skeleton''}) \to \neg C(x) && \textit{12, Universal generalization} \\
+	& \neg \exists x \in A, \neg (\textrm{Comp}(x, \textrm{``skeleton''}) \to \neg C(x)) && \textit{13, Generalized De Morgan's} \\
+	& \therefore \neg \exists x \in A, C(x) \wedge \textrm{Comp}(x, \textrm{``skeleton''}) && \textit{14, Negation of implication} \notag & \qed
+\end{align}
+
+\end{enumerate}
+
+\item \begin{enumerate}
+
+\item $\forall x \in \mathbb{Z}^{+}, (Odd(x) \wedge \neg Divisible(x, 3)) \to Divisible(x^2-1, 3)$
+
+\item \begin{proof} Let there be two general cases for $x$: $x=3k+1$ and $3k+2$, where $k \in \mathbb{N}$.
+
+In the first case, we find that $(3k+1)^2 - 1 = (9k^2 + 6k + 1) - 1 = 9k^2 + 6k = 3k(k+2)$.
+
+For the second case, we can see that $(3k+2)^2 - 1 = (9k^2 + 12k +4) - 1 = 9k^2 + 12k + 3 = 3(3k^2 + 4k + 1)$.
+
+In both cases, $x^2-1$ produces a formula which is divisible by 3, and thus for all values of $x$ that are not divisible by 3, $x^2-1$ must be divisble by 3. Given that the odd values of $x$ that are not divisible by 3 is a subset of all values of $x$ that are not divisible by 3, it is thus proven that if $x$ is a positive odd integer that is not divisible by 3, then $x^2-1$ is divisible by 3.
+\end{proof}
+
+\end{enumerate}
+
+\item \begin{enumerate}
+
+\item $\exists c \in \mathbb{R}^{+}, \exists n_0 \in \mathbb{N}, \forall n \in \mathbb{N}, n \geq n_0 \to (3n^2 + 60 n + 100) \leq cn^2$
+
+\item \begin{proof}
+Let $c=4$ and $n_0 = 62$. Then, let $n$ by any arbitrary natural number. If we assume that the antecedent, $n \geq n_0$, is true, then let us prove that $ (3n^2 + 60 n + 100) \leq 4n^2$:
+\begin{align*}
+	 (3n^2 + 60 n + 100) &\leq 4n^2\\
+	 -n^2 + 60 n + 100 &\leq 0\\
+	 n^2 - 60n - 100 &\geq 0 
+\end{align*}
+Solving the quadratic equation, we find that $n \leq -1.62$ and $n \geq 61.62$. As the domain of $n$ only includes natural numbers, we find that when $n \geq 62$ (thus also satisfying the initial assumption of $n \geq n_0$), the statement $ (3n^2 + 60 n + 100) \leq 4n^2$ holds true. Therefore, an algorithm that executes in $3n^2 + 60 n + 100$ is in $O(n^2)$.
+\end{proof}
+
+\end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}
