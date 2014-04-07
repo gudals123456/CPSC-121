@@ -121,13 +121,24 @@ F_{k} + F_{k-1} &< 2^k +2^{k-1} \\
 
 \item \begin{enumerate}
 
-\item A*B+A(A+B+A)*B[AB]*
+\item A valid regular expression is as follows: A*B+A(A+B+A)*B[AB]*
 
-\item c*(ac|bc|c)*[ab]?
+\item A valid regular expression is as follows: c*(ac|bc|c)*[ab]?
 
 \end{enumerate}
 
-\item 
+\item \begin{proof}
+We proceed by induction on a list of numbers of size $m$.
+
+When $m=0$, $L$ is empty and there are no elements in the list, and thus \texttt{(search n L)} correctly produces false, as an empty list cannot possibly contain $n$.
+
+Suppose that $k$ is an arbitrary integer with $k \geq 0$ such that \texttt{(search n alist)}  produces true if and only if $n$ is in $L$, where $L$ is a list of size $k$. Assuming that this is true for a list of size $k$, we must show that this function produces the correct boolean value for a list of size $(k+1)$.
+
+Because $L$ has a size of at least 1, \texttt{(search n L)} examines the first element in the list, and compares this value to the given value of $n$. If and only if the two values are equal, the comparison produces true, signifying that $n$ is in $L$. Otherwise, \texttt{(search n alist)} is called on the rest of the list, which is of size $(k+1) - 1 = k$.
+
+By the inductive hypothesis, this function correctly computes the value for a list of size $k$. Because $n$ must be found in the first element or in the rest of the list if $n$ is in $L$, the function \texttt{(search n alist)} is valid for a list of $(k+1)$ elements.
+
+\end{proof}
 
 \end{enumerate}
 
