@@ -217,5 +217,6 @@ pip-log.txt
 *.aux
 *.log
 *.synctex.gz
-Cheat Sheet.*
+Cheat\ Sheet.*
 Formula Sheet.pdf
+Lecture\ Slides/
